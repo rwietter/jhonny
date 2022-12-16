@@ -1,11 +1,47 @@
+/* eslint-disable @next/next/no-img-element */
 import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from '@next/font/google'
 import styles from '../styles/Home.module.css'
+import { useEffect } from 'react'
+import Link from 'next/link'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+  let numberSection = 1;
+
+  const handleNavigation = (direction: number) => {
+    numberSection = numberSection + direction;
+
+    if (numberSection < 1) numberSection = 1;
+    else if (numberSection > 3) numberSection = 3;
+
+    if (typeof document !== 'undefined') {
+      const sectionsCounter = document.getElementById('sections-counter');
+      const bar = document.getElementById('bar');
+      const section = document.getElementById(`section-${numberSection}`);
+
+      if (sectionsCounter && bar && section) {
+        sectionsCounter.innerHTML = `${numberSection}/3`;
+        bar.style.height = `${numberSection * 34}%`;
+        section.scrollIntoView();
+      }
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener("wheel", event => {
+      const delta = Math.sign(event.deltaY);
+      handleNavigation(delta);
+    });
+
+    return () => {
+      window.removeEventListener("wheel", () => { });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   return (
     <>
       <Head>
@@ -14,110 +50,60 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={styles.main}>
-        <div className={styles.description}>
-          <p>
-            Get started by editing&nbsp;
-            <code className={styles.code}>pages/index.tsx</code>
-          </p>
-          <div>
-            <a
-              href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              By{' '}
-              <Image
-                src="/vercel.svg"
-                alt="Vercel Logo"
-                className={styles.vercelLogo}
-                width={100}
-                height={24}
-                priority
-              />
-            </a>
+      <div className="container">
+        <div className="background"></div>
+
+        <header className='header'>
+          <nav>
+            <Link href="/">Artista</Link>
+            <Link href="/">Releases</Link>
+            <Link href="/">Vídeos</Link>
+            <Link href="/">Contato</Link>
+          </nav>
+        </header>
+
+        <div className='explanation'> 
+          <p>THIS IS</p>
+        </div>
+
+        <div className='name'> 
+          <h1>JHONNY</h1>
+          <h2>SAN</h2>
+          <h3>TA</h3>
+          <h4>NNA</h4>
+        </div>
+
+        <aside className="navigation">
+          <p id="sections-counter">1/3</p>
+          <div className="progress-bar">
+            <span id="bar"></span>
           </div>
-        </div>
+          <button type="button" onClick={() => handleNavigation(-1)}>
+            <img src="/icons/arrow-up.svg" alt="" />
+          </button>
+          <button type="button" onClick={() => handleNavigation(1)}>
+            <img src="/icons/arrow-down.svg" alt="" />
+          </button>
+        </aside>
 
-        <div className={styles.center}>
-          <Image
-            className={styles.logo}
-            src="/next.svg"
-            alt="Next.js Logo"
-            width={180}
-            height={37}
-            priority
-          />
-          <div className={styles.thirteen}>
-            <Image
-              src="/thirteen.svg"
-              alt="13"
-              width={40}
-              height={31}
-              priority
-            />
-          </div>
-        </div>
+        <section className='images'>
+          <section id="section-1">
+            <img className="fones left" src="/jhonny-1.png" alt="Fone da esquerda" />
+          </section>
 
-        <div className={styles.grid}>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Docs <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Find in-depth information about Next.js features and&nbsp;API.
-            </p>
-          </a>
+          <section id="section-2">
+            <img className="fones" src="/jhonny-2.png" alt="Fone da direita" />
+          </section>
 
-          <a
-            href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Learn <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Learn about Next.js in an interactive course with&nbsp;quizzes!
-            </p>
-          </a>
+          <section id="section-3">
+            <img className="fones" src="/jhonny-3.png" alt="Fone da direita" />
+          </section>
+        </section>
 
-          <a
-            href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Templates <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Discover and deploy boilerplate example Next.js&nbsp;projects.
-            </p>
-          </a>
+        <footer className="content">
 
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Deploy <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Instantly deploy your Next.js site to a shareable URL
-              with&nbsp;Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
+        </footer>
+      </div>
     </>
   )
 }
