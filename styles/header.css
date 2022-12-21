@@ -22,8 +22,29 @@ header h1 {
 
 .decoration .doted {
     background: #fff;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
+    width: 1px;
+    height: 30px;
     margin: .24rem;
+    opacity: 0.4;
+    transform: skewX(-20deg)
+}
+
+@media screen and (max-width: 768px) {
+    header {
+        padding: 2rem 2rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    header {
+        flex-flow: column;
+    }
+
+    .decoration {
+        display: none;
+    }
+
+    header h1 {
+        font-size: 1.5rem;
+    }
 }

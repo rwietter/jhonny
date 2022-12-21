@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import Head from 'next/head'
-import { useState } from 'react'
-import { motion as m } from 'framer-motion'
+import { useEffect, useState } from 'react'
+import { motion as m, useMotionValue, useSpring } from 'framer-motion'
 import Link from 'next/link';
 
 const draw = {
@@ -21,6 +21,24 @@ const draw = {
 
 export default function Home() {
   const [play, setPlay] = useState(false)
+
+  const cursorX = useMotionValue(-200)
+  const cursorY = useMotionValue(-200)
+
+  const springConfig = { damping: 25, stiffness: 700 };
+  const cursorXSpring = useSpring(cursorX, springConfig);
+  const cursorYSpring = useSpring(cursorY, springConfig);
+
+  useEffect(() => {
+    const moveCursor = (e: MouseEvent) => {
+      cursorX.set(e.clientX + 8)
+      cursorY.set(e.clientY + 8)
+    }
+    window.addEventListener('mousemove', moveCursor)
+    return () => {
+      window.removeEventListener('mousemove', moveCursor)
+    }
+  }, [cursorX, cursorY])
 
   const toggleVideo = () => {
     const video = document.getElementById('jhonny') as HTMLVideoElement
@@ -46,6 +64,13 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="container">
+        <m.div
+          className="cursor"
+          style={{
+            translateX: cursorXSpring,
+            translateY: cursorYSpring,
+          }}
+        />
         <header>
           <div className='logo'>
             <h1>Jhonny Santanna</h1>
@@ -117,6 +142,9 @@ export default function Home() {
             <Link href="/event">Events</Link>
             <Link href="/contact">Contact Me</Link>
           </nav>
+          <div className="separator">
+            <div></div>
+          </div>
           <nav className='social'>
             <a href="https://www.instagram.com/cantorjhonnysantanna/" target="_blank" rel="noreferrer">
               <svg width="25" height="25" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">

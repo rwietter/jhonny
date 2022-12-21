@@ -58,6 +58,7 @@ figure #playButton {
     position: absolute;
     background: none;
     margin: 0 auto;
+    cursor: pointer;
     border: none;
     outline: none;
     border-radius: 50rem;
@@ -98,3 +99,4 @@ figure #playButton {
 
 @import url(header.css);
 @import url(footer.css);
+@import url(cursor.css);
