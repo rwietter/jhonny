@@ -3,6 +3,7 @@
 main {
     width: 100vw;
     height: 100vh;
+    overflow: hidden;
 }
 
 .gradient {
@@ -17,11 +18,11 @@ main {
 }
 
 .gradient-1 {
-    background: linear-gradient(to right, #0A1218 0%, rgba(0, 0, 0, 0) 100%);
+    background: linear-gradient(to right, #0A1218 0%, rgba(0, 0, 0, 0) 80%);
 }
 
 .gradient-2 {
-    background: linear-gradient(to top, #0A1218 0%, rgba(0, 0, 0, 0) 100%);
+    background: linear-gradient(to top, #0A1218 0%, rgba(0, 0, 0, 0) 80%);
 }
 
 figure {
@@ -47,7 +48,7 @@ figure .play {
     left: 0;
     right: 0;
     bottom: 0;
-    top: 0;
+    top: -70px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -97,6 +98,48 @@ figure #playButton {
     opacity: 20%;
 }
 
+.content {
+    position: absolute;
+    z-index: 4;
+    background-color: transparent;
+    margin-top: 10rem;
+    color: #fff;
+    padding: 0 .4rem;
+
+}
+
+.content h1 {
+    text-transform: uppercase;
+    font-size: 3rem;
+    font-family: 'Poppins', serif;
+    font-weight: 900;
+    text-align: center;
+    cursor: default;
+}
+
+.content p {
+    text-align: center;
+    font-size: 1.2rem;
+    font-family: 'Futura std', sans-serif;
+    cursor: default;
+    letter-spacing: .6rem;
+    padding-top: .5rem;
+    font-weight: 100;
+    text-transform: uppercase;
+}
+
+@media screen and (max-width: 600px) {
+    .content h1 {
+        font-size: 2rem;
+    }
+}
+
+@media screen and (max-width: 390px) {
+    .content h1 {
+        font-size: 1.6rem;
+    }
+}
+    
 @import url(header.css);
 @import url(footer.css);
 @import url(cursor.css);

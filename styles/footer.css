@@ -19,13 +19,10 @@ footer .info a {
     color: #fff;
     font-family: 'Futura Std', sans-serif;
     text-decoration: none;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     transition: filter 0.2s ease;
 }
 
-/* footer .info a:is(:hover) {
-    filter: brightness(0.7)
-} */
 
 footer .info a + a {
     padding-left: 1rem;
@@ -34,15 +31,6 @@ footer .info a + a {
 footer .social a + a {
     padding-left: 2rem;
 }
-
-/* footer .social a svg path {
-    fill: #fff;
-    transition: fill 0.2s ease;
-}
-
-footer .social a:is(:hover) svg path {
-    fill:#F6CC75;
-} */
 
 @media screen and (max-width: 768px) {
     footer {
@@ -71,6 +59,16 @@ footer .social a:is(:hover) svg path {
     }
 
     footer .info a {
-        font-size: 1rem;
+        font-size: 1.3rem;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    footer .social a + a {
+        padding-left: 1rem;
+    }
+    footer .social a svg {
+        width: 22px;
+        height: 22px;
     }
 }

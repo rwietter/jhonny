@@ -3,6 +3,10 @@ import Head from 'next/head'
 import { useEffect, useState } from 'react'
 import { motion as m, useMotionValue, useSpring } from 'framer-motion'
 import Link from 'next/link';
+import { AiFillInstagram } from 'react-icons/ai'
+import { BsFacebook } from 'react-icons/bs'
+import { SiYoutubemusic } from 'react-icons/si'
+import { author } from '../static/author';
 
 const draw = {
   hidden: { pathLength: 0, opacity: 0 },
@@ -43,17 +47,37 @@ export default function Home() {
   const toggleVideo = () => {
     const video = document.getElementById('jhonny') as HTMLVideoElement
     const playButton = document.getElementById('playButton') as HTMLButtonElement
+    const decoration = document.querySelector('.decoration') as HTMLDivElement
 
     if (!video || !playButton) return;
 
     if (video.paused) {
       video.play()
       setPlay(true)
+      decoration.classList.add('active')
     } else {
       video.pause()
       setPlay(false)
+      decoration.classList.remove('active')
     }
   }
+
+  const [width, setWidth] = useState(0);
+
+  function handleWindowSizeChange() {
+    if (typeof window !== 'undefined') {
+      setWidth(window.innerWidth);
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener('resize', handleWindowSizeChange);
+    return () => {
+      window.removeEventListener('resize', handleWindowSizeChange);
+    }
+  }, []);
+
+  const isMobile = width <= 768;
 
   return (
     <>
@@ -64,24 +88,26 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="container">
-        <m.div
-          className="cursor"
-          style={{
-            translateX: cursorXSpring,
-            translateY: cursorYSpring,
-          }}
-        />
+        {!isMobile && (
+          <m.div
+            className="cursor"
+            style={{
+              translateX: cursorXSpring,
+              translateY: cursorYSpring,
+            }}
+          />
+        )}
         <header>
           <div className='logo'>
             <h1>Jhonny Santanna</h1>
           </div>
           <div className='decoration'>
-            <div className='doted'></div>
-            <div className='doted'></div>
-            <div className='doted'></div>
-            <div className='doted'></div>
-            <div className='doted'></div>
-            <div className='doted'></div>
+            <div className='doted start'></div>
+            <div className='doted start'></div>
+            <div className='doted start'></div>
+            <div className='doted end'></div>
+            <div className='doted end'></div>
+            <div className='doted end'></div>
           </div>
         </header>
 
@@ -92,7 +118,7 @@ export default function Home() {
             <div className='gradient gradient-2'></div>
             <video id="jhonny" autoPlay={true} loop muted={false} preload="auto" poster="video-thumb.png" src="Camisa-Manchada.mp4"></video>
             <div className='play' onClick={toggleVideo}>
-              <m.button id="playButton" whileHover={{ scale: 1.02 }}>
+              <m.button id="playButton">
                 {!play && (
                   <m.svg
                     initial="hidden"
@@ -132,43 +158,30 @@ export default function Home() {
                 )}
               </m.button>
             </div>
+            <div className='content'>
+              <h1>Jhonny Santanna</h1>
+              <p>Cantor & Compositor</p>
+            </div>
           </figure>
-
         </main>
 
         <footer>
           <nav className='info'>
-            <Link href="/music">Music</Link>
-            <Link href="/event">Events</Link>
-            <Link href="/contact">Contact Me</Link>
+            <Link href="/music">Música</Link>
+            <Link href="/event">Eventos</Link>
+            <Link href="/contact">Contato</Link>
           </nav>
           <div className="separator">
             <div></div>
           </div>
           <nav className='social'>
-            <a href="https://www.instagram.com/cantorjhonnysantanna/" target="_blank" rel="noreferrer">
-              <svg width="25" height="25" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <g data-name="Layer 2">
-                  <g data-name="twitter">
-                    <polyline points="0 0 24 0 24 24 0 24" opacity="0" />
-                    <path fill='#fff' d="M8.08 20A11.07 11.07 0 0 0 19.52 9 8.09 8.09 0 0 0 21 6.16a.30.44 0 0 0-.62-.51 1.88 1.88 0 0 1-2.16-.38 3.89 3.89 0 0 0-5.58-.17A4.13 4.13 0 0 0 11.49 9C8.14 9.2 5.84 7.61 4 5.43a.43.43 0 0 0-.75.24 9.68 9.68 0 0 0 4.6 10.05A6.73 6.73 0 0 1 3.38 18a.45.45 0 0 0-.14.84A11 11 0 0 0 8.08 20" />
-                  </g>
-                </g>
-              </svg>
-            </a>
-            <a href="https://www.facebook.com/jhonny.santanna.7" target="_blank" rel="noreferrer">
-              <svg
-                width="25" height="25"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24">
-                <g data-name="Layer 2">
-                  <g data-name="facebook">
-                    <rect width="24" height="24" transform="rotate(180 12 12)" opacity="0" />
-                    <path fill='#fff' d="M17 3.5a.5.5 0 0 0-.5-.5H14a4.77 4.77 0 0 0-5 4.5v2.7H6.5a.5.5 0 0 0-.5.5v2.6a.5.5 0 0 0 .5.5H9v6.7a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-6.7h2.62a.5.5 0 0 0 .49-.37l.72-2.6a.5.5 0 0 0-.48-.63H13V7.5a1 1 0 0 1 1-.9h2.5a.5.5 0 0 0 .5-.5z" />
-                  </g>
-                </g>
-              </svg>
-            </a>
+            {
+              author.media.map((item, index) => (
+                <a key={item.type} href={item.url} target="_blank" rel="noreferrer">
+                  {item.icon()}
+                </a>
+              ))
+            }
           </nav>
         </footer>
       </div>
