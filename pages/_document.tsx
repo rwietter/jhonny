@@ -9,6 +9,8 @@ export default function Document() {
       <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap" rel="stylesheet" />
       <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@800&display=swap" rel="stylesheet" />
       <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&display=swap" rel="stylesheet" />
+      <link href="https://fonts.cdnfonts.com/css/futura-std-4" rel="stylesheet" />
+      <link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet" />
       <body>
         <Main />
         <NextScript />
