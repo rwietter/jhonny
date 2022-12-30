@@ -21,11 +21,6 @@ export const author: Author = {
 			icon: () => <SiYoutubemusic size={28} color="#FFF" />
 		},
 		{
-			type: 'instagram',
-			url: 'https://www.instagram.com/cantorjhonnysantanna/',
-			icon: () => <AiFillInstagram size={30} color="#FFF" />
-		},
-		{
 			type: 'facebook',
 			url: 'https://www.facebook.com/jhonnysantannacantor/',
 			icon: () => <BsFacebook size={26} color="#FFF" />
@@ -34,6 +29,11 @@ export const author: Author = {
 			type: 'spotify',
 			url: 'https://open.spotify.com/artist/0EUdHJqWfCUhsdCSYYKsP0',
 			icon: () => <BsSpotify size={26} color="#FFF" />
+		},
+		{
+			type: 'instagram',
+			url: 'https://www.instagram.com/cantorjhonnysantanna/',
+			icon: () => <AiFillInstagram size={30} color="#FFF" />
 		},
 		{
 			type: 'whatsapp',
