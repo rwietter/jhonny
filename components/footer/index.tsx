@@ -5,6 +5,7 @@ import { Modal } from "../modal"
 
 export const Footer = () => {
   const [isOpen, setOpen] = useState(false)
+  const [isSending, setSending] = useState(false)
 
   const openModal = () => setOpen(true)
   const closeModal = () => setOpen(false)
@@ -19,6 +20,7 @@ export const Footer = () => {
     };
 
     try {
+      setSending(true)
       fetch('/api/contact', {
         method: 'POST',
         body: JSON.stringify({
@@ -34,6 +36,8 @@ export const Footer = () => {
         closeModal()
       }).catch(() => {
         alert('Erro ao enviar mensagem!')
+      }).finally(() => {
+        setSending(false)
       })
     } catch (error) {
       console.error(error)
@@ -68,7 +72,7 @@ export const Footer = () => {
             <input type="email" id="email" />
             <label htmlFor="message" placeholder="Sua mensagem">Mensagem</label>
             <textarea id="message" />
-            <button type="submit">Enviar</button>
+            <button type="submit" disabled={isSending}>Enviar</button>
           </form>
         </div>
       </Modal>
