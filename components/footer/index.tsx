@@ -1,6 +1,5 @@
 import Link from "next/link"
 import { useState } from "react"
-import { useModal } from "../../hooks/useModal"
 import { author } from "../../static/author"
 import { Modal } from "../modal"
 
