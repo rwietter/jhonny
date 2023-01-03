@@ -11,7 +11,7 @@ export const Main = () => {
         <div className='gradient radial-gradient'></div>
         <div className='gradient gradient-1'></div>
         <div className='gradient gradient-2'></div>
-        <video id="jhonny" autoPlay={true} loop muted={false} preload="auto" poster="video-thumb.png" src="Camisa-Manchada.mp4"></video>
+        <video id="jhonny" autoPlay={false} loop muted={false} preload="auto" poster="video-thumb.png" src="Camisa-Manchada.mp4"></video>
         <div className='play' onClick={toggleVideo}>
           <m.button id="playButton">
             {!play && (

@@ -100,7 +100,7 @@ figure #playButton {
 
 .content {
     position: absolute;
-    z-index: 4;
+    z-index: 3;
     background-color: transparent;
     margin-top: 10rem;
     color: #fff;
