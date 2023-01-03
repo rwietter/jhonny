@@ -29,6 +29,11 @@ export const Footer = () => {
         headers: {
           'Content-Type': 'application/json',
         }
+      }).then(() => {
+        alert('Mensagem enviada com sucesso!')
+        closeModal()
+      }).catch(() => {
+        alert('Erro ao enviar mensagem!')
       })
     } catch (error) {
       console.error(error)
