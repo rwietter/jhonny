@@ -26,6 +26,12 @@ export async function getServerSideProps() {
 
   const dataJson = await data.json()
 
+  if (!dataJson) return {
+    props: {
+      shows: []
+    }
+  }
+
   return {
     props: {
       shows: dataJson.files['jhonny-shows.json'].content
