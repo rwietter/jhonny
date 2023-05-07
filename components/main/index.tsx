@@ -1,20 +1,35 @@
 import { useVideo } from "../../hooks/useVideo";
 import { motion as m } from "framer-motion";
 import { draw } from "./motion";
+import sanitize from "sanitize-html";
 
-export const Main = () => {
+const videoHtml = `
+  <video id="jhonny" autoPlay={false} loop muted={false} preload="auto" poster="video-thumb.png">
+    <source src="Camisa-Manchada.mp4" type="video/mp4" />
+  </video>
+`
+
+export const Presentation = () => {
   const { toggleVideo, play } = useVideo();
 
   return (
-    <main>
+    <section className="presentation">
       <figure>
         <div className='gradient radial-gradient'></div>
         <div className='gradient gradient-1'></div>
         <div className='gradient gradient-2'></div>
-        <video id="jhonny" autoPlay={false} loop muted={false} preload="auto" poster="video-thumb.png" src="Camisa-Manchada.mp4"></video>
+        <div className="video-container" dangerouslySetInnerHTML={{
+          __html: sanitize(videoHtml, {
+            allowedTags: ['video', 'source'],
+            allowedAttributes: {
+              video: ['id', 'autoPlay', 'loop', 'muted', 'preload', 'poster'],
+              source: ['src', 'type']
+            }
+          })
+        }}></div>
         <div className='play' onClick={toggleVideo}>
           <m.button id="playButton">
-            {!play && (
+            {!play ? (
               <m.svg
                 initial="hidden"
                 animate="visible"
@@ -31,8 +46,8 @@ export const Main = () => {
                 <m.path variants={draw} stroke="none" d="M0 0h24v24H0z" fill="none" />
                 <m.path variants={draw} d="M7 4v16l13 -8z" />
               </m.svg>
-            )}
-            {play && (
+            ) : null}
+            {play ? (
               <m.svg
                 initial="hidden"
                 animate="visible"
@@ -50,7 +65,7 @@ export const Main = () => {
                 <m.rect variants={draw} x="6" y="5" width="4" height="14" rx="1" />
                 <m.rect variants={draw} x="14" y="5" width="4" height="14" rx="1" />
               </m.svg>
-            )}
+            ) : null}
           </m.button>
         </div>
         <div className='content'>
@@ -58,6 +73,6 @@ export const Main = () => {
           <p>Cantor & Compositor</p>
         </div>
       </figure>
-    </main>
+    </section>
   )
 }

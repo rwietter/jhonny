@@ -48,7 +48,7 @@ export const Footer = () => {
     <footer>
       <nav className='info'>
         <Link href="/music">Música</Link>
-        <Link href="/event">Eventos</Link>
+        <Link href="/eventos">Eventos</Link>
         <button className="contact" onClick={() => openModal()} type="button">Contato</button>
       </nav>
       <div className="separator">

@@ -1,14 +1,14 @@
 @import url(global.css);
 
-main {
-    width: 100vw;
+.presentation {
+    width: 100%;
     height: 100vh;
     overflow: hidden;
 }
 
 .gradient {
     position: absolute;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     z-index: 2;
 }
@@ -30,16 +30,17 @@ figure {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100vw;
+    max-height: 100vh;
     height: 100vh;
 }
 
-figure video {
+figure .video-container,
+video {
     width: 100vw;
     height: 100vh;
     object-fit: cover;
     max-height: calc(100vh - 5px);
-    position: fixed;
+    position: absolute;
     z-index: 1;
 }
 
@@ -138,7 +139,7 @@ figure #playButton {
         font-size: 1.6rem;
     }
 }
-    
+
 @import url(header.css);
 @import url(footer.css);
 @import url(cursor.css);
