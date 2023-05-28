@@ -1,4 +1,3 @@
-import Link from "next/link"
 import { useState } from "react"
 import { author } from "../../static/author"
 import { Modal } from "../modal"
@@ -18,6 +17,11 @@ export const Footer = () => {
       email: { value: string };
       message: { value: string };
     };
+
+    if (!email.value || !message.value || !name.value) {
+      alert('Preencha todos os campos!')
+      return
+    }
 
     try {
       setSending(true)
@@ -47,8 +51,6 @@ export const Footer = () => {
   return (
     <footer>
       <nav className='info'>
-        <Link href="/music">Música</Link>
-        <Link href="/eventos">Eventos</Link>
         <button className="contact" onClick={() => openModal()} type="button">Contato</button>
       </nav>
       <div className="separator">
@@ -56,9 +58,9 @@ export const Footer = () => {
       </div>
       <nav className='social'>
         {
-          author.media.map((item, index) => (
-            <a key={item.type} href={item.url} target="_blank" rel="noreferrer">
-              {item.icon()}
+          author.media.map((social) => (
+            <a key={social.type} href={social.url} target="_blank" rel="noreferrer">
+              {social.icon()}
             </a>
           ))
         }

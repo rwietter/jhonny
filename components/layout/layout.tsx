@@ -1,4 +1,5 @@
 import { type ReactNode } from "react"
+import useDevice from "../../hooks/useDevice"
 import { Bubble } from "../Bubble"
 import { Footer } from "../footer"
 import { HeadComponent } from "../head"
@@ -9,10 +10,11 @@ type Props = {
 }
 
 export const Layout = ({ children }: Props) => {
+  const { isMobile } = useDevice()
   return (
     <>
       <HeadComponent />
-      <Bubble />
+      {!isMobile ? <Bubble /> : null}
       <Header />
       <main>
         {children}
