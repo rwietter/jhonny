@@ -1,13 +1,6 @@
 import { useVideo } from "../../hooks/useVideo";
 import { motion as m } from "framer-motion";
 import { draw } from "./motion";
-import sanitize from "sanitize-html";
-
-const videoHtml = `
-  <video id="jhonny" autoPlay={false} loop muted={false} preload="auto" poster="video-thumb.png">
-    <source src="Camisa-Manchada.mp4" type="video/mp4" />
-  </video>
-`
 
 export const Presentation = () => {
   const { toggleVideo, play } = useVideo();
@@ -18,15 +11,11 @@ export const Presentation = () => {
         <div className='gradient radial-gradient'></div>
         <div className='gradient gradient-1'></div>
         <div className='gradient gradient-2'></div>
-        <div className="video-container" dangerouslySetInnerHTML={{
-          __html: sanitize(videoHtml, {
-            allowedTags: ['video', 'source'],
-            allowedAttributes: {
-              video: ['id', 'autoPlay', 'loop', 'muted', 'preload', 'poster'],
-              source: ['src', 'type']
-            }
-          })
-        }}></div>
+        <div className="video-container">
+          <video id="jhonny" autoPlay={false} loop muted={false} preload="auto" poster="video-thumb.png">
+            <source src="Camisa-Manchada.mp4" type="video/mp4" />
+          </video>
+        </div>
         <div className='play' onClick={toggleVideo}>
           <m.button id="playButton">
             {!play ? (

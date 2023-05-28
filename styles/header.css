@@ -19,6 +19,7 @@ header h1 {
     0% {
         transform: skewX(-20deg);
     }
+
     100% {
         transform: skewX(20deg);
     }
@@ -31,44 +32,25 @@ header h1 {
 
 .decoration .doted {
     background: #fff;
-    width: 1px;
+    width: 2px;
     height: 30px;
     margin: .24rem;
-    transform: skewX(-20deg);
+    border-radius: 50rem;
+    transform: skewX(0);
     will-change: transform;
-}
-
-.decoration .doted.end {
-    transform: skewX(20deg);
 }
 
 .decoration.active .doted {
     animation: musicReaction .5s infinite ease-in-out alternate;
 }
 
-.decoration .doted:nth-child(1) {
-    animation-delay: .1s;
-}
-
 .decoration .doted:nth-child(2) {
     animation-delay: .2s;
+    width: 2.5px;
+    transform: skewX(-20deg);
+    will-change: transform;
 }
 
-.decoration .doted:nth-child(3) {
-    animation-delay: .3s;
-}
-
-.decoration .doted:nth-child(4) {
-    animation-delay: .3s;
-}
-
-.decoration .doted:nth-child(5) {
-    animation-delay: .2s;
-}
-
-.decoration .doted:nth-child(6) {
-    animation-delay: .1s;
-}
 
 @media screen and (max-width: 768px) {
     header {

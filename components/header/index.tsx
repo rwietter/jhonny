@@ -7,9 +7,6 @@ export const Header = () => (
       <div className='doted start'></div>
       <div className='doted start'></div>
       <div className='doted start'></div>
-      <div className='doted end'></div>
-      <div className='doted end'></div>
-      <div className='doted end'></div>
     </div>
   </header>
 )

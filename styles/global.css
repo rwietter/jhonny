@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 * {
   margin: 0;
   padding: 0;
@@ -5,10 +9,10 @@
 }
 
 :root {
-  --color-background: #1F1F1F; 
-  
-  --color-primary: #8B90A7; 
-  --color-secondary: #C7C3D2; 
+  --color-background: #1F1F1F;
+
+  --color-primary: #8B90A7;
+  --color-secondary: #C7C3D2;
   --color-tertiary: #8B90A7;
 
   --color-silver: #EEEBED;
@@ -20,4 +24,19 @@ html {
 
 body {
   background: var(--color-background);
+}
+
+.bubble {
+  position: fixed;
+  border-radius: 50%;
+  z-index: 9999;
+  pointer-events: none;
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+#show {
+  position: absolute;
+  right: -100px;
+  top: 50%;
+  transform: translateY(-50%);
 }

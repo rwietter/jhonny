@@ -1,5 +1,5 @@
 import { type ReactNode } from "react"
-import { AnimatedMouse } from "../animated-mouse"
+import { Bubble } from "../Bubble"
 import { Footer } from "../footer"
 import { HeadComponent } from "../head"
 import { Header } from "../header"
@@ -12,7 +12,7 @@ export const Layout = ({ children }: Props) => {
   return (
     <>
       <HeadComponent />
-      <AnimatedMouse />
+      <Bubble />
       <Header />
       <main>
         {children}

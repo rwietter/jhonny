@@ -1,3 +1,25 @@
 .shows-container {
   min-height: 100vh;
 }
+
+.show-card-container {
+  position: relative;
+}
+
+.show-card {
+  position: relative;
+  z-index: 2;
+}
+
+.show-card-bg {
+  opacity: .5;
+  filter: blur(10px);
+  background-image: linear-gradient(45deg, #fa0, #fd66cb 25%, #9f6eff 50%, #0af 76%, #0fa);
+  border-radius: 10px;
+  position: absolute;
+  top: 0%;
+  bottom: 0%;
+  left: 0%;
+  right: 0%;
+  z-index: 1;
+}
