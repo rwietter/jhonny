@@ -37,7 +37,7 @@ export const Shows = ({ shows }: Props) => {
   const futureShows = mapShows(dataShows)
 
   return (
-    <section className='h-screen relative w-full bg-primary py-6 px-3 md:px-8 lg:px-16'>
+    <section className='h-auto lg:h-screen relative w-full bg-primary py-6 pb-10 lg:pb-6 px-3 md:px-8 lg:px-16'>
       <h1 className="text-center text-7xl text-secondary font-bold font-primary">Shows</h1>
       <div className="w-full pt-10 flex flex-col items-center ">
         {futureShows.map((show, index) => (
