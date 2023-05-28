@@ -1,9 +1,9 @@
 import { type ReactNode } from "react"
 import useDevice from "../../hooks/useDevice"
+
 import { Bubble } from "../Bubble"
-import { Footer } from "../footer"
-import { HeadComponent } from "../head"
-import { Header } from "../header"
+import { HeadComponent } from "../Head"
+import { Header } from "../Header"
 
 type Props = {
   children: ReactNode
@@ -11,15 +11,15 @@ type Props = {
 
 export const Layout = ({ children }: Props) => {
   const { isMobile } = useDevice()
+  const BubleMouse = !isMobile ? <Bubble /> : <span />
   return (
     <>
       <HeadComponent />
-      {!isMobile ? <Bubble /> : null}
+      {BubleMouse}
       <Header />
       <main>
         {children}
       </main>
-      <Footer />
     </>
   )
 }

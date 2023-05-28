@@ -10,7 +10,6 @@ export default function useDevice() {
         /Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i
       )
     );
-    console.log("mobile", mobile);
     setMobile(mobile);
   }, []);
 

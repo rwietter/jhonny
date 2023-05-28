@@ -5,13 +5,12 @@ type ModalProps = {
   title: string;
 }
 
-const Modal = ({ children, isOpen, closeModal, title = '' }: ModalProps) => {
+export const Contact = ({ children, isOpen, closeModal, title = '' }: ModalProps) => {
 
   if (!isOpen) return null;
 
   return (
     <div className="modal">
-
       <div className="modal__content">
         <div className="modal__header">
           <h2 className="modal__title">{title}</h2>
@@ -38,5 +37,3 @@ const Modal = ({ children, isOpen, closeModal, title = '' }: ModalProps) => {
     </div>
   );
 }
-
-export { Modal }

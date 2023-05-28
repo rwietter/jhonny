@@ -1,6 +1,7 @@
-import { Presentation } from '../components/main';
-import { Layout } from '../components/layout';
+import { Presentation } from '../components/Presentation';
+import { Layout } from '../components/Layout';
 import { Shows } from '../components/Shows';
+import { Footer } from '../components/Footer';
 
 type Props = {
   shows: string;
@@ -11,6 +12,7 @@ export const Home = (data: Props) => {
     <Layout>
       <Presentation />
       <Shows shows={data.shows} />
+      <Footer />
     </Layout>
   )
 }
