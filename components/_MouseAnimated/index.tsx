@@ -1,12 +1,11 @@
 import { useMotionValue, useSpring, motion } from "framer-motion";
 import { useEffect } from "react";
-import { useViewPortSize } from "../../hooks/useViewPortSize";
+import { useViewPortSize } from "@hooks/useViewPortSize";
 
 export const AnimatedMouse = () => {
   const cursorX = useMotionValue(-200)
   const cursorY = useMotionValue(-200)
   const { isMobile } = useViewPortSize()
-
 
   const springConfig = { damping: 25, stiffness: 700 };
   const cursorXSpring = useSpring(cursorX, springConfig);

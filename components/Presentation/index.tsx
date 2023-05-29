@@ -1,7 +1,7 @@
-import { useVideo } from "../../hooks/useVideo";
 import { motion as m } from "framer-motion";
+import { useVideo } from "@hooks/useVideo";
+import { Baseboard } from "@components/Baseboard";
 import { draw } from "./motion";
-import { Baseboard } from "../Baseboard";
 
 export const Presentation = () => {
   const { toggleVideo, play } = useVideo();

@@ -1,9 +1,9 @@
 import { type ReactNode } from "react"
-import useDevice from "../../hooks/useDevice"
+import useDevice from "@hooks/useDevice"
 
-import { Bubble } from "../Bubble"
-import { HeadComponent } from "../Head"
-import { Header } from "../Header"
+import { Bubble } from "@components/Bubble"
+import { HeadComponent } from "@components/Head"
+import { Header } from "@components/Header"
 
 type Props = {
   children: ReactNode

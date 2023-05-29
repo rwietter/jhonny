@@ -1,6 +1,6 @@
 import { useState } from "react"
-import { author } from "../../static/author"
-import { Contact } from "../Contact"
+import { author } from "@static/author"
+import { Contact } from "@components/Contact"
 
 const sendMail = async ({ setSending, closeModal, emailPayload }: SendEmailProps) => {
   try {

@@ -15,6 +15,8 @@ module.exports = {
         primary: "#000000",
         secondary: "#F2F2F2",
       },
+      fontSize: {
+      },
       fontFamily: {
         inter: [
           "Inter var",

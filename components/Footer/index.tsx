@@ -1,9 +1,9 @@
 import React from 'react';
-import { author } from '../../static/author';
+import { author } from '@static/author';
 
 const Footer: React.FC = () => (
   <footer>
-    <section className='bg-zinc-950 flex flex-col sm:flex-row justify-between items-center sm:px-3 md:px-10 lg:px-32 py-20'>
+    <section className='bg-zinc-950 flex flex-col sm:flex-row justify-between items-center sm:px-3 md:px-10 lg:px-32 py-20 lg:py-32'>
       <div>
         <h3 className='text-white font-sacramento text-4xl md:text-6xl pb-10 sm:pb-0'>Jhonny Santanna</h3>
       </div>
@@ -26,7 +26,7 @@ const Footer: React.FC = () => (
     </section>
 
     <section className='w-full bg-primary'>
-      <p className='text-center text-white py-5 font-secondary text-base'>Jhonny Santanna © {new Date().getFullYear()}. All rights reserved.</p>
+      <p className='text-center text-white py-5 font-secondary text-lg'>Jhonny Santanna © {new Date().getFullYear()}. All rights reserved.</p>
     </section>
   </footer>
 
