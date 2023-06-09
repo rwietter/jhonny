@@ -7,6 +7,7 @@ import { filterFutureShows } from '@helpers/filter-future-shows';
 import { Playlist } from '@components/Playlist';
 import { IPlaylistData } from '@types';
 import { sortTracks } from '@helpers/sort-tracks';
+import { ErrorBoundary } from 'shared/ErrorBoundary';
 
 type HomeProps = {
   shows: string;
@@ -15,9 +16,15 @@ type HomeProps = {
 
 const Home = (data: HomeProps) => (
   <Layout>
-    <Presentation />
-    <Playlist playlist={data.playlist} />
-    <Shows shows={data.shows} />
+    <ErrorBoundary>
+      <Presentation />
+    </ErrorBoundary>
+    <ErrorBoundary>
+      <Playlist playlist={data.playlist} />
+    </ErrorBoundary>
+    <ErrorBoundary>
+      <Shows shows={data.shows} />
+    </ErrorBoundary>
     <Footer />
   </Layout>
 )
