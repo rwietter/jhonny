@@ -9,12 +9,7 @@ const ShowSongs = () => {
   const { data, error, isLoading } = useSWR('/api/songs', fetcher)
   const { setSongs, songs } = useSongs()
 
-  useEffect(() => {
-    console.log('renderizou');
-    if (data) {
-      setSongs(data)
-    }
-  }, [data])
+  useEffect(() => { if (data) setSongs(data) }, [data])
 
   if (isLoading) return <div>Carregando...</div>
   if (error) return <div>Erro ao carregar</div>
