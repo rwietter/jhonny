@@ -7,10 +7,10 @@ datasource db {
   url      = "file:./dev.db"
 }
 
-generator erd {
-  provider = "prisma-erd-generator"
-  output   = "./erd.pdf"
-}
+// generator erd {
+//   provider = "prisma-erd-generator"
+//   output   = "./erd.pdf"
+// }
 
 model Performances {
   id    String   @id @default(uuid())
