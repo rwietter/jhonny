@@ -1,5 +1,5 @@
 export const Header = () => (
-  <header>
+  <header className="header">
     <div className='logo'>
       <h1>Jhonny Santanna</h1>
     </div>

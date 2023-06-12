@@ -1,0 +1,131 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+generator erd {
+  provider = "prisma-erd-generator"
+  output   = "./erd.pdf"
+}
+
+model Performances {
+  id    String   @id @default(uuid())
+  local String
+  date  DateTime
+  link  String
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  songs PerformancesSongs[]
+
+  @@map("performances")
+}
+
+model Songs {
+  id      String @id @default(uuid())
+  name    String
+  year    Int
+  youtube String
+  spotify String
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  performances PerformancesSongs[]
+
+  @@map("songs")
+}
+
+model PerformancesSongs {
+  performance    Performances @relation(fields: [performance_id], references: [id], onDelete: Cascade)
+  performance_id String
+
+  song    Songs  @relation(fields: [song_id], references: [id], onDelete: Cascade)
+  song_id String
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  @@id([performance_id, song_id])
+  @@map("performances_songs")
+}
+
+// ---------------------------------------------
+
+// model Performances {
+//   id    String   @id @default(uuid())
+//   local String
+//   date  DateTime
+
+//   created_at DateTime @default(now())
+//   updated_at DateTime @updatedAt
+
+//   songs PerformancesSongs[]
+
+//   @@map("performances")
+// }
+
+// model Songs {
+//   id     String @id @default(uuid())
+//   title  String
+//   artist String
+//   album  String
+//   year   Int
+//   genre  String
+
+//   created_at DateTime @default(now())
+//   updated_at DateTime @updatedAt
+
+//   performances PerformancesSongs[]
+
+//   @@map("songs")
+// }
+
+// model PerformancesSongs {
+//   performance    Performances @relation(fields: [performance_id], references: [id], onDelete: Cascade)
+//   performance_id String
+
+//   song    Songs  @relation(fields: [song_id], references: [id], onDelete: Cascade)
+//   song_id String
+
+//   created_at DateTime @default(now())
+//   updated_at DateTime @updatedAt
+
+//   @@id([performance_id, song_id])
+// }
+
+// One to Many (One Performances has many Songs) mongodb
+// model Performances {
+//   id         String   @id @default(auto()) @map("_id") @db.ObjectId
+//   local      String
+//   date       DateTime
+//   created_at DateTime @default(now())
+//   updated_at DateTime @updatedAt
+
+//   songs_ids String[] @db.ObjectId
+//   songs     Songs[]  @relation(fields: [songs_ids], references: [id])
+
+//   @@map("performances")
+// }
+
+// model Songs {
+//   id     String @id @default(auto()) @map("_id") @db.ObjectId
+//   title  String
+//   artist String
+//   album  String
+//   year   Int
+//   genre  String
+
+//   performances_id String[]       @db.ObjectId
+//   performances    Performances[] @relation(fields: [performances_id], references: [id])
+
+//   created_at DateTime @default(now())
+//   updated_at DateTime @updatedAt
+
+//   @@map("songs")
+// }

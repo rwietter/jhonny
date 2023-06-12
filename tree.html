@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>JSON Tree to PDF</title>
+  <script src="https://d3js.org/d3.v6.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+</head>
+
+<body>
+  <div id="graph"></div>
+
+  <script>
+    // Step 1: Create a JSON Tree
+    const data = {
+      "id": 1,
+      "name": "Node 1",
+      "children": [
+        {
+          "id": 2,
+          "name": "Node 2",
+          "children": [
+            {
+              "id": 4,
+              "name": "Node 4",
+              "children": []
+            },
+            {
+              "id": 5,
+              "name": "Node 5",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "name": "Node 3",
+          "children": [
+            {
+              "id": 6,
+              "name": "Node 6",
+              "children": []
+            },
+            {
+              "id": 7,
+              "name": "Node 7",
+              "children": []
+            }
+          ]
+        }
+      ]
+    };
+
+    // Step 2: Convert JSON to a Graph Schema
+    const width = 800;
+    const height = 720;
+    const svg = d3.select("#graph")
+      .append("svg")
+      .attr("width", width)
+      .attr("height", height);
+    const root = d3.hierarchy(data);
+    const treeLayout = d3.tree().size([width, height]);
+    const treeData = treeLayout(root);
+
+    // Step 3: Render the Graph Schema
+    const links = svg.selectAll(".link")
+      .data(treeData.links())
+      .enter()
+      .append("path")
+      .attr("class", "link")
+      .attr("d", d3.linkHorizontal()
+        .x(d => d.y)
+        .y(d => d.x));
+
+    const nodes = svg.selectAll(".node")
+      .data(treeData.descendants())
+      .enter()
+      .append("g")
+      .attr("class", "node")
+      .attr("transform", d => `translate(${d.y},${d.x})`);
+
+    nodes.append("circle")
+      .attr("r", 4);
+
+    nodes.append("text")
+      .attr("x", d => d.children ? -13 : 13)
+      .attr("dy", 3)
+      .attr("text-anchor", d => d.children ? "end" : "start")
+      .text(d => d.data.name);
+
+    // Step 4: Export the Graph Schema as PDF
+    const svgString = new XMLSerializer().serializeToString(svg.node());
+
+    const canvas = document.createElement("canvas");
+    const context = canvas.getContext("2d");
+    const DOMURL = self.URL || self.webkitURL || self;
+    const img = new Image();
+    const svgBlob = new Blob([svgString], { type: "image/svg+xml;charset=utf-8" });
+    const url = DOMURL.createObjectURL(svgBlob);
+
+    img.onload = function () {
+      canvas.width = width;
+      canvas.height = height;
+      context.drawImage(img, 0, 0);
+      DOMURL.revokeObjectURL(url);
+
+      const pdf = new jsPDF();
+      pdf.addImage(canvas.toDataURL("image/png"), "PNG", 10, 10);
+      pdf.save("json_tree.pdf");
+    };
+
+    img.src = url;
+  </script>
+</body>
+
+</html>
