@@ -2,18 +2,18 @@ generator client {
   provider = "prisma-client-js"
 }
 
-datasource db {
-  provider = "sqlite"
-  url      = "file:./dev.db"
+generator erd {
+  provider = "prisma-erd-generator"
+  output   = "./erd.pdf"
 }
 
-// generator erd {
-//   provider = "prisma-erd-generator"
-//   output   = "./erd.pdf"
-// }
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
 
 model Performances {
-  id    String   @id @default(uuid())
+  id    String   @id @default(uuid()) @map("_id")
   local String
   date  DateTime
   link  String
@@ -27,7 +27,7 @@ model Performances {
 }
 
 model Songs {
-  id      String @id @default(uuid())
+  id      String @id @default(uuid()) @map("_id")
   name    String
   year    Int
   youtube String
@@ -42,6 +42,7 @@ model Songs {
 }
 
 model PerformancesSongs {
+  id             String       @id @default(uuid()) @map("_id")
   performance    Performances @relation(fields: [performance_id], references: [id], onDelete: Cascade)
   performance_id String
 
@@ -51,7 +52,6 @@ model PerformancesSongs {
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
 
-  @@id([performance_id, song_id])
   @@map("performances_songs")
 }
 
