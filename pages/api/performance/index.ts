@@ -16,7 +16,11 @@ export default async function handler(
   try {
     switch (req.method) {
       case 'GET': {
-   
+        const performances = await $prisma.performances.findMany({})
+
+        if (!performances) return res.status(404).json({ message: 'No performances found' })
+
+        return res.status(200).json(performances)
       }
       case 'POST': {
         const { date, local, songs } = schema.parse(req.body)
