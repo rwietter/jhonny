@@ -1,14 +1,21 @@
 import { IPlaylist } from "@types";
 import Track from "./components/Track";
+import { useEffect, useState } from "react";
 
-interface PlaylistProps {
-  playlist: string
-}
+const Playlist = () => {
+  const [tracks, setTracks] = useState<IPlaylist[]>([]);
 
-const Playlist = ({ playlist }: PlaylistProps) => {
-  const tracks: IPlaylist[] = JSON.parse(playlist)
+  const fetchMusics = async () => {
+    const data = await fetch("/api/songs");
+    return await data.json();
+  };
 
-  if (!tracks) return null
+  useEffect(() => {
+    fetchMusics().then((data) => {
+      setTracks(data);
+    });
+  }, []);
+
 
   return (
     <section className='h-auto lg:h-[40rem] relative w-full bg-primary py-6 pb-32 lg:pb-6 px-3 md:px-8 lg:px-16'>
@@ -19,7 +26,7 @@ const Playlist = ({ playlist }: PlaylistProps) => {
             key={index}
             name={track.name}
             url={track.url}
-            date={track.date} />
+            year={track.year} />
         ))}
       </div>
     </section>

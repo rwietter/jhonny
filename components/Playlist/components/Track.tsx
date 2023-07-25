@@ -1,9 +1,7 @@
-import { toIntlDate } from "@helpers/intl-date";
 import { IPlaylist } from "@types";
 
-const Track: React.FC<IPlaylist> = ({ name, url, date }) => {
-  const dateFormatted = toIntlDate(date)
-
+const Track: React.FC<IPlaylist> = ({ name, url, year }) => {
+  console.log(name, url, year);
   return (
     <div className="flex flex-col items-center py-4 justify-center w-full h-full ">
       <a
@@ -14,9 +12,11 @@ const Track: React.FC<IPlaylist> = ({ name, url, date }) => {
       >
         {name}
       </a>
-      <p className="text-center pt-1 text-lg text-secondary font-secondary">{dateFormatted}</p>
+      <p className="text-center pt-1 text-lg text-secondary font-secondary">
+        {year}
+      </p>
     </div>
-  )
-}
+  );
+};
 
 export default Track;
