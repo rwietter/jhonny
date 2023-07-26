@@ -1,7 +1,8 @@
 import { IPlaylist } from "@types";
-import Track from "./components/Track";
+import { Track } from "./components/Track";
 import { Suspense } from "react";
 import useSWR from "swr";
+import { url } from "inspector";
 
 const fetcher = (url: string): Promise<IPlaylist[]> =>
   fetch(url).then((r) => r.json());
@@ -30,12 +31,13 @@ const Playlist = () => {
           </p>
         }
       >
-        <div className="w-full pt-10 flex flex-col items-center ">
-          {data.map((track, index) => (
+        <div className="w-full pt-10 flex flex-col items-center">
+          {data.map((track) => (
             <Track
-              key={index}
+              key={track.name}
               name={track.name}
-              url={track.url}
+              spotify={track.spotify}
+              youtube={track.youtube}
               year={track.year}
             />
           ))}

@@ -1,5 +1,6 @@
 export interface IPlaylist {
   name: string;
-  url: string;
+  spotify: string;
+  youtube: string;
   year: string;
 }
