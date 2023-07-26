@@ -31,7 +31,6 @@ export default async function handler(
           data: {
             date: new Date(dateParsed),
             local,
-            link: '',
             songs: {
               createMany: {
                 data: songs.map((song) => ({ song_id: song })),
