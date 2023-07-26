@@ -1,2 +1,2 @@
-export type { IShow, IShowData } from './shows'
-export type { IPlaylist, IPlaylistData } from './playlist'
+export type { IShow } from './shows'
+export type { IPlaylist } from './playlist'

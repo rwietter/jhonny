@@ -15,7 +15,7 @@
   opacity: .5;
   filter: blur(10px);
   background-image: linear-gradient(45deg, #fa0, #fd66cb 25%, #9f6eff 50%, #0af 76%, #0fa);
-  border-radius: 10px;
+  border-radius: 5px;
   position: absolute;
   top: 0%;
   bottom: 0%;

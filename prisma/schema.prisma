@@ -1,0 +1,52 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model Performances {
+  id    String   @id @default(uuid()) @map("_id")
+  local String
+  date  DateTime
+  lat   Float?
+  lng   Float?
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  songs PerformancesSongs[]
+
+  @@map("performances")
+}
+
+model Songs {
+  id      String @id @default(uuid()) @map("_id")
+  name    String
+  year    Int
+  youtube String
+  spotify String
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  performances PerformancesSongs[]
+
+  @@map("songs")
+}
+
+model PerformancesSongs {
+  id             String       @id @default(uuid()) @map("_id")
+  performance    Performances @relation(fields: [performance_id], references: [id], onDelete: Cascade)
+  performance_id String
+
+  song    Songs  @relation(fields: [song_id], references: [id], onDelete: Cascade)
+  song_id String
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  @@map("performances_songs")
+}

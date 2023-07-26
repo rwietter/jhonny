@@ -9,6 +9,7 @@ const nextConfig = {
     EMAIL_APP_PASSWORD: process.env.EMAIL_APP_PASSWORD,
     EMAIL_AUTH: process.env.EMAIL_AUTH,
     GITHUB_KEY: process.env.GITHUB_KEY,
+    API_URL: process.env.API_URL,
   },
 }
 

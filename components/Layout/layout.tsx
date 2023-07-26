@@ -11,15 +11,13 @@ type Props = {
 
 export const Layout = ({ children }: Props) => {
   const { isMobile } = useDevice()
-  const BubleMouse = !isMobile ? <Bubble /> : <span />
+  const BubbleMouse = !isMobile ? <Bubble /> : <span />
   return (
     <>
       <HeadComponent />
-      {BubleMouse}
+      {BubbleMouse}
       <Header />
-      <main>
-        {children}
-      </main>
+      <main>{children}</main>
     </>
-  )
+  );
 }
