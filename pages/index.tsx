@@ -9,6 +9,7 @@ import { client } from 'graphql/client';
 import { GET_SHOWS } from 'graphql/queries/shows';
 import { IShow } from 'types/shows';
 import { GET_SONGS } from 'graphql/queries/songs';
+import { NextSEO } from '@components/SEO';
 
 type PageProps = {
   shows: IShow[]
@@ -18,6 +19,14 @@ type PageProps = {
 const Home = (props: PageProps) => {
   return (
     <Layout>
+      <NextSEO
+        title="Jhonny Santanna - Home"
+        description="Jhonny Santanna - Cantor e Compositor"
+        image=""
+        author="Jhonny Santanna"
+        url="https://jhonnysantanna.vercel.app/"
+        content="website"
+      />
     <ErrorBoundary>
       <Presentation />
     </ErrorBoundary>
