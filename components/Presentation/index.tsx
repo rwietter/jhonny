@@ -2,22 +2,28 @@ import { motion as m } from "framer-motion";
 import { useVideo } from "@hooks/useVideo";
 import { Baseboard } from "@components/Baseboard";
 import { draw } from "./motion";
+import { useEffect, useState } from "react";
 
 export const Presentation = () => {
   const { toggleVideo, play } = useVideo();
+  const [isClient, setIsClient] = useState(false)
+
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
 
   return (
     <>
       <section className="presentation">
-        <figure>
+        <section className="figure">
           <div className='gradient radial-gradient'></div>
           <div className='gradient gradient-1'></div>
           <div className='gradient gradient-2'></div>
-          <div className="video-container">
+          {isClient && (
             <video id="jhonny" autoPlay={false} loop muted={false} preload="auto" poster="video-thumb.png">
               <source src="Camisa-Manchada.mp4" type="video/mp4" />
             </video>
-          </div>
+          )}
           <div className='play' onClick={toggleVideo}>
             <m.button id="playButton">
               {!play ? (
@@ -63,7 +69,7 @@ export const Presentation = () => {
             <h1>Jhonny Santanna</h1>
             <p>Cantor & Compositor</p>
           </div>
-        </figure>
+        </section>
 
       </section>
       <Baseboard />

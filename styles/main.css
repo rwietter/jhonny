@@ -23,7 +23,7 @@
     background: linear-gradient(to top, #000000 0%, rgba(0, 0, 0, 0) 80%);
 }
 
-figure {
+.figure {
     position: relative;
     display: flex;
     justify-content: center;
@@ -32,17 +32,16 @@ figure {
     height: 100vh;
 }
 
-figure .video-container,
-video {
+.figure video {
     width: 100vw;
-    height: 100vh !important;
+    height: 100vh;
     object-fit: cover;
     max-height: calc(100vh - 5px);
     position: absolute;
     z-index: 1;
 }
 
-figure .play {
+.figure .play {
     position: relative;
     left: 0;
     right: 0;
@@ -54,7 +53,7 @@ figure .play {
 }
 
 
-figure #playButton {
+.figure #playButton {
     position: absolute;
     background: none;
     margin: 0 auto;
@@ -71,8 +70,8 @@ figure #playButton {
 
 #playButton svg {
     position: relative;
-    left: 5px;
-    top: 2px;
+    left: 0;
+    top: 0;
 }
 
 #playButton::after {

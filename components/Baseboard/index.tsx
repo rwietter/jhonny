@@ -68,9 +68,6 @@ export const Baseboard = () => {
       <nav className='info'>
         <button className="contact" onClick={() => openModal()} type="button">Contato</button>
       </nav>
-      <div className="separator">
-        <div></div>
-      </div>
       <nav className='social'>
         {
           author.media.map((social) => (

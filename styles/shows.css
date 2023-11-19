@@ -11,6 +11,32 @@
   z-index: 2;
 }
 
+.map {
+  position: absolute;
+  z-index: 5;
+  width: 90%;
+  height: 95%;
+  background-image: url('../public/ECVPHVMUwAEcSsB.jpeg');
+  border-radius: 8px;
+  clip-path: polygon(60% 0, 100% 0%, 100% 100%, 48% 100%);
+  top: 4px;
+  bottom: 0;
+  right: 8px;
+  z-index: 2;
+  object-fit: cover;
+}
+
+.map::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: '';
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, #fa0, #fd66cb 25%, #9f6eff 50%, #0af 76%, #0fa);
+  opacity: .3;
+}
+
 .show-card-bg {
   opacity: .5;
   filter: blur(10px);
