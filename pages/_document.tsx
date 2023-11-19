@@ -21,6 +21,7 @@ export default function Document() {
       <meta name="apple-mobile-web-app-status-bar-style" content="default" />
       <meta name="apple-mobile-web-app-title" content="Jhonny Santanna" />
       <meta name="format-detection" content="telephone=no" />
+      <meta name="google-site-verification" content="ZpndW8ODSha4DLSp4lFMq4hxB9dYzfThT99NJ-4shQc" />
       <meta name="mobile-web-app-capable" content="yes" />
       <meta name="theme-color" content="#000000" />
       <link rel="alternate" type="application/rss+xml" title="XML RSS feed" href="/rss.xml" />
