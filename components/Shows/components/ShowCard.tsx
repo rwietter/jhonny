@@ -18,22 +18,22 @@ export const ShowCard = ({ attributes }: Pick<IShow, 'attributes'>) => {
       >
         <a
           href={mapsUrl}
-          className="text-xl font-extrabold text-start max-w-[50%]"
+          className="text-xl font-extrabold text-start md:max-w-[50%] hover:underline"
           target="_blank"
           rel="noreferrer nofollow"
         >
           {attributes.local}
         </a>
-        <p className="font-inter text-xl pt-4 text-center">
+        <p className="font-secondary text-xl pt-4 text-start">
           {dateFormatted && `${dateFormatted}h`}
         </p>
       </div>
-      <a className="map"
+      <a className="map invisible md:visible"
         href={mapsUrl}
         target="_blank"
         rel="noreferrer nofollow"
       />
-      <div className="show-card-bg" />
+      <div className="show-card-bg " />
     </section>
   );
 }
